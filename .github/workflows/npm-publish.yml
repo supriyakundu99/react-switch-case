@@ -18,13 +18,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install GitVersion
-        run: |
-          curl -sSL https://gitversion.net/install.sh | bash
-          export PATH="$HOME/.gitversion:$PATH"
-
-      - name: Determine version
-        run: gitversion
+      - name: Update version
+        run: npm run update-version
 
       - name: Install dependencies
         run: npm install
