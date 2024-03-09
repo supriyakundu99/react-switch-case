@@ -1,30 +1,74 @@
-# React + TypeScript + Vite
+## React Switch Case Statement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This package provides React components that emulate switch-case behavior for conditional rendering in React applications.
 
-Currently, two official plugins are available:
+### Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can install the package via npm or yarn:
 
-## Expanding the ESLint configuration
+- **npm**:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  ```
+  npm install react-switch-case-statement
+  ```
 
-- Configure the top-level `parserOptions` property like this:
+- **Yarn**:
+  ```
+  yarn add react-switch-case-statement
+  ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+### Components
+
+#### `Switch`
+
+The `Switch` component represents the switch statement itself. It evaluates the given expression and renders the corresponding `Case` component or default case.
+
+##### Props
+
+- `expression`: (required) The value to switch on.
+- `children`: (required) The `Case` components defining different cases.
+
+#### `Case`
+
+The `Case` component represents a single case within the switch statement. It renders its children if the provided `value` matches the `expression` of the parent `Switch` component.
+
+##### Props
+
+- `value`: (optional) The value to match against the switch expression. If not provided, it behaves as the default case.
+- `children`: (required) The React elements to render if the case matches.
+
+### Usage
+
+In your React component file:
+
+```jsx
+import React from "react";
+import { Switch, Case } from "react-switch-case-statement";
+
+function App() {
+  const value = 2; // Example expression value
+
+  return (
+    <Switch expression={value}>
+      <Case value={1}>Case 1</Case>
+      <Case value={2}>Case 2</Case>
+      <Case value={3}>Case 3</Case>
+      <Case>Default Case</Case>
+    </Switch>
+  );
 }
+
+export default App;
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+In this example, depending on the value of `value`, one of the cases will be rendered. If `value` is `2`, it will render `Case 2`. If `value` is not matched with any cases, it will render the default case, which is `Default Case`.
+
+### Example
+
+You can find a more comprehensive example in the [`example`](./example) directory of this repository.
+
+### License
+
+This package is open-sourced software licensed under the [MIT license](./LICENSE).
+
+---
