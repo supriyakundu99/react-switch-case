@@ -1,7 +1,7 @@
 {
   "name": "react-switch-case-statement",
-  "version": "1.0.0",
-  "description": "A description of your React package",
+  "version": "1.0.1",
+  "description": "This package provides React components that emulate switch-case behavior for conditional rendering in React applications.",
   "type": "module",
   "scripts": {
     "dev": "vite",
